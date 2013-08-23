@@ -1,0 +1,46 @@
+#### INSTALLATION #
+
+You need one dependency to make Bandwidthd work:
+
+libpcap from http://www.tcpdump.org/
+
+Chances are you already have it, if in doubt
+just run configure and see what it complains about.
+
+Additionally you will need at least one of the following three:
+
+1.
+libgd from http://www.boutell.com/gd/
+linpng from http://www.libpng.org/
+
+This will enable bandwidthd to make static graphs
+at specified time interval.
+
+If you are missing libpng, make sure you re-install libgd
+after you install it.
+
+2.
+MySQL from http://www.mysql.com/
+PHP from http://www.php.net/
+Apache from http://www.apache.org/
+
+This will enable bandwidthd to store statistics in MySQL,
+graphs will be created on demand by webpage in PHP.
+
+3.
+PostgreSQL from http://www.postgresql.org/
+PHP from http://www.php.net/
+Apache from http://www.apache.org/
+
+This will enable bandwidthd to store statistics in PostgreSQL,
+graphs will be created on demand by webpage in PHP.
+
+
+
+Configure and install the Bandwidthd source:
+
+./configure && make install
+
+Edit /usr/local/bandwidthd/etc/bandwidthd.conf to suit
+your network.  Start Bandwidthd.   See README for
+details and information on stand alone vs database driven mode.
