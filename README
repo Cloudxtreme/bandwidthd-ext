@@ -33,6 +33,8 @@ ix86	Solaris 9
 		OpenBSD 3.4
 		FreeBSD 4.8
 		NetBSD 1.6.1
+		FreeBSD 8.3
+		FreeBSD 8.4
 AMD64	Fedora Core 3
 PPC G4 	MacOSX 10.2
 
