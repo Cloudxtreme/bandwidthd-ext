@@ -1022,35 +1022,35 @@ MYSQL *CheckMysqlTables(MYSQL * conn)
   if (mysql_num_rows(res) != 1) {
     mysql_free_result(res);
 
-    ret = mysql_query(conn, "CREATE TABLE bd_rx_log (sensor_id INT, ip INT UNSIGNED, timestamp TIMESTAMP, sample_duration INT, total INT, icmp INT, udp INT, tcp INT, ftp INT, http INT, p2p INT, INDEX bd_rx_log_sensors_id_ip_timestamp_idx (sensor_id, ip, timestamp), INDEX bd_rx_log_sensor_id_timestamp_idx (sensor_id, timestamp)) TYPE=innodb");
+    ret = mysql_query(conn, "CREATE TABLE bd_rx_log (sensor_id INT, ip INT UNSIGNED, timestamp TIMESTAMP, sample_duration INT, total INT, icmp INT, udp INT, tcp INT, ftp INT, http INT, p2p INT, INDEX bd_rx_log_sensors_id_ip_timestamp_idx (sensor_id, ip, timestamp), INDEX bd_rx_log_sensor_id_timestamp_idx (sensor_id, timestamp)) ENGINE=InnoDB");
     if (ret) {
       syslog(LOG_ERR, "MySQL CREATE TABLE failed: %s", mysql_error(conn));
       mysql_close(conn);
       return (NULL);
     }
 
-    ret = mysql_query(conn, "CREATE TABLE bd_tx_log (sensor_id INT, ip INT UNSIGNED, timestamp TIMESTAMP, sample_duration INT, total INT, icmp INT, udp INT, tcp INT, ftp INT, http INT, p2p INT, INDEX bd_tx_log_sensors_id_ip_timestamp_idx (sensor_id, ip, timestamp), INDEX bd_tx_log_sensor_id_timestamp_idx (sensor_id, timestamp)) TYPE=innodb");
+    ret = mysql_query(conn, "CREATE TABLE bd_tx_log (sensor_id INT, ip INT UNSIGNED, timestamp TIMESTAMP, sample_duration INT, total INT, icmp INT, udp INT, tcp INT, ftp INT, http INT, p2p INT, INDEX bd_tx_log_sensors_id_ip_timestamp_idx (sensor_id, ip, timestamp), INDEX bd_tx_log_sensor_id_timestamp_idx (sensor_id, timestamp)) ENGINE=InnoDB");
     if (ret) {
       syslog(LOG_ERR, "MySQL CREATE TABLE failed: %s", mysql_error(conn));
       mysql_close(conn);
       return (NULL);
     }
 
-    ret = mysql_query(conn, "CREATE TABLE bd_rx_total_log (sensor_id INT, ip INT UNSIGNED, timestamp TIMESTAMP, sample_duration INT, total INT, icmp INT, udp INT, tcp INT, ftp INT, http INT, p2p INT, INDEX bd_rx_total_log_sensors_id_timestamp_idx (sensor_id, timestamp)) TYPE=innodb");
+    ret = mysql_query(conn, "CREATE TABLE bd_rx_total_log (sensor_id INT, ip INT UNSIGNED, timestamp TIMESTAMP, sample_duration INT, total INT, icmp INT, udp INT, tcp INT, ftp INT, http INT, p2p INT, INDEX bd_rx_total_log_sensors_id_timestamp_idx (sensor_id, timestamp)) ENGINE=InnoDB");
     if (ret) {
       syslog(LOG_ERR, "MySQL CREATE TABLE failed: %s", mysql_error(conn));
       mysql_close(conn);
       return (NULL);
     }
 
-    ret = mysql_query(conn, "CREATE TABLE bd_tx_total_log (sensor_id INT, ip INT UNSIGNED, timestamp TIMESTAMP, sample_duration INT, total INT, icmp INT, udp INT, tcp INT, ftp INT, http INT, p2p INT, INDEX bd_tx_total_log_sensors_id_timestamp_idx (sensor_id, timestamp)) TYPE=innodb");
+    ret = mysql_query(conn, "CREATE TABLE bd_tx_total_log (sensor_id INT, ip INT UNSIGNED, timestamp TIMESTAMP, sample_duration INT, total INT, icmp INT, udp INT, tcp INT, ftp INT, http INT, p2p INT, INDEX bd_tx_total_log_sensors_id_timestamp_idx (sensor_id, timestamp)) ENGINE=InnoDB");
     if (ret) {
       syslog(LOG_ERR, "MySQL CREATE TABLE failed: %s", mysql_error(conn));
       mysql_close(conn);
       return (NULL);
     }
 
-    ret = mysql_query(conn, "CREATE TABLE sensors (sensor_id INT PRIMARY KEY AUTO_INCREMENT, sensor_name VARCHAR(255) UNIQUE NOT NULL, last_connection TIMESTAMP) TYPE=innodb");
+    ret = mysql_query(conn, "CREATE TABLE sensors (sensor_id INT PRIMARY KEY AUTO_INCREMENT, sensor_name VARCHAR(255) UNIQUE NOT NULL, last_connection TIMESTAMP) ENGINE=InnoDB");
     if (ret) {
       syslog(LOG_ERR, "MySQL CREATE TABLE failed: %s", mysql_error(conn));
       mysql_close(conn);
