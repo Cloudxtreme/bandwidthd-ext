@@ -1,0 +1,13 @@
+FreeBSD Install notes
+======================
+
+Sensor:
+1. install mysql client
+# cd /usr/ports/databases/mysql55-client/ && make BATCH=yes install 
+# cd /usr/ports/archivers/unzip && make BATCH=yes install
+# cd /tmp/ && fetch https://github.com/nightflyza/bandwidthd-ext/archive/master.zip && unzip master.zip 
+# cd bandwidthd-ext-master && ./configure && make && make install
+
+Then edit /usr/local/etc/bandwidthd.conf and specify needed options. For usage bandwidthd only as a sensor, is not neccessary
+compile it with GD support. Just uncomment "graph" option and set it to "false".
+
