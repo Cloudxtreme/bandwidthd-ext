@@ -303,7 +303,7 @@ $ftp = $a_ftp;
 $http = $a_http;
 $p2p = $a_p2p;
 
-$YMax += $YMax*0.05;    // Add an extra 5%
+$YMax += $YMax*0.12;    // Add an extra 5%
 
 // if a y scale was specified override YMax
 if (isset($yscale))
@@ -380,12 +380,12 @@ else if ($TotalSent < 1024*1024)
 else 
   $txtTotalSent = sprintf("Total %.1f GBytes", $TotalSent/(1024.0*1024.0));
                                                                                                                              
-ImageString($im, 2, XOFFSET+5,  $height-20, $txtTotalSent, $black);
+ImageString($im, 2, XOFFSET+205,  $height-20, $txtTotalSent, $black);
 ImageString($im, 2, $width/2+XOFFSET/2,  $height-20, $txtPeakSendRate, $black);
-imagestring($im, 2, XOFFSET+205, $height-20, $ip, $black);
+imagestring($im, 2, XOFFSET+5, $height-20, 'IP: '.$ip, $black);
 //debug
-imagestring($im, 2, XOFFSET+305, $height-20, 'int: '.$interval, $black);
-imagestring($im, 2, XOFFSET+305, $height-32, 'tab: '.$table, $black);
+//imagestring($im, 2, XOFFSET+305, $height-20, 'int: '.$interval, $black);
+//imagestring($im, 2, XOFFSET+305, $height-32, 'tab: '.$table, $black);
 
 // Draw X Axis
 
