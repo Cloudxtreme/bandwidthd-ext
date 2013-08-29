@@ -94,13 +94,15 @@ else
   exit(1);
 
 
-//if (isset($_GET['table']))
-//  $table = $_GET['table'];
-//else
-//  $table = "bd_rx_log";
+if (isset($_GET['table']))
+  $table = $_GET['table'];
+else
+  $table = "bd_rx_log";
 
 if (isset($_GET['yscale']))
   $yscale = $_GET['yscale'];
+
+
 
 //backward compat
 //dayly
@@ -159,6 +161,7 @@ if (isset($_GET['timestamp']))
   $timestamp = $_GET['timestamp'];
 else
   $timestamp = time() - $interval + (0.05*$interval);
+
 
 
 $total = array();
@@ -381,7 +384,8 @@ ImageString($im, 2, XOFFSET+5,  $height-20, $txtTotalSent, $black);
 ImageString($im, 2, $width/2+XOFFSET/2,  $height-20, $txtPeakSendRate, $black);
 imagestring($im, 2, XOFFSET+205, $height-20, $ip, $black);
 //debug
-//imagestring($im, 2, XOFFSET+305, $height-20, 'int:'.$interval, $black);
+imagestring($im, 2, XOFFSET+305, $height-20, 'int: '.$interval, $black);
+imagestring($im, 2, XOFFSET+305, $height-32, 'tab: '.$table, $black);
 
 // Draw X Axis
 
