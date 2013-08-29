@@ -144,6 +144,15 @@ function bd_escape_string($string)
     return $string;
 }
 
+
+ function ispos($string,$search) {
+        if (strpos($string,$search)===false) {
+            return(false);
+        } else {
+            return(true);
+        }
+    }
+
 $starttime = time();
 set_time_limit(300);
 ?>

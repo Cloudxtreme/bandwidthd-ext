@@ -82,28 +82,84 @@ if (isset($_GET['interval']))
 else
   $interval = DFLT_INTERVAL;
 
-if (isset($_GET['ip']))
+if (isset($_GET['ip'])) {
   $ip = $_GET['ip'];
-else
+ } else {
   exit(1);
+  }
 
 if (isset($_GET['sensor_name']))
   $sensor_name = $_GET['sensor_name'];
 else
   exit(1);
 
+
+//if (isset($_GET['table']))
+//  $table = $_GET['table'];
+//else
+//  $table = "bd_rx_log";
+
+if (isset($_GET['yscale']))
+  $yscale = $_GET['yscale'];
+
+//backward compat
+//dayly
+if (ispos($ip, '-1-R')) {
+    $table = "bd_rx_log";
+    $interval=172800;
+    $ip= str_replace('-1-R.png', '', $ip);
+}
+
+if (ispos($ip, '-1-S')) {
+    $table = "bd_tx_log";
+    $interval=172800;
+    $ip= str_replace('-1-S.png', '', $ip);
+}
+
+//weekly
+if (ispos($ip, '-2-R')) {
+    $table = "bd_rx_log";
+    $interval=1691200;
+    $ip= str_replace('-2-R.png', '', $ip);
+}
+
+if (ispos($ip, '-2-S')) {
+    $table = "bd_tx_log";
+    $interval=691200;
+    $ip= str_replace('-2-S.png', '', $ip);
+}
+
+//monthly
+if (ispos($ip, '-3-R')) {
+    $table = "bd_rx_log";
+    $interval=3024000;
+    $ip= str_replace('-3-R.png', '', $ip);
+}
+
+if (ispos($ip, '-3-S')) {
+    $table = "bd_tx_log";
+    $interval=3024000;
+    $ip= str_replace('-3-S.png', '', $ip);
+}
+
+//yearly
+if (ispos($ip, '-4-R')) {
+    $table = "bd_rx_log";
+    $interval=34560000;
+    $ip= str_replace('-4-R.png', '', $ip);
+}
+
+if (ispos($ip, '-4-S')) {
+    $table = "bd_tx_log";
+    $interval=34560000;
+    $ip= str_replace('-4-S.png', '', $ip);
+}
+
 if (isset($_GET['timestamp']))
   $timestamp = $_GET['timestamp'];
 else
   $timestamp = time() - $interval + (0.05*$interval);
 
-if (isset($_GET['table']))
-  $table = $_GET['table'];
-else
-  $table = "bd_rx_log";
-
-if (isset($_GET['yscale']))
-  $yscale = $_GET['yscale'];
 
 $total = array();
 $icmp = array();
@@ -323,6 +379,9 @@ else
                                                                                                                              
 ImageString($im, 2, XOFFSET+5,  $height-20, $txtTotalSent, $black);
 ImageString($im, 2, $width/2+XOFFSET/2,  $height-20, $txtPeakSendRate, $black);
+imagestring($im, 2, XOFFSET+205, $height-20, $ip, $black);
+//debug
+//imagestring($im, 2, XOFFSET+305, $height-20, 'int:'.$interval, $black);
 
 // Draw X Axis
 
