@@ -104,8 +104,67 @@ if (isset($_GET['yscale']))
 
 
 
-//backward compat
+//
+// total graphs
+//
+
 //dayly
+if (ispos($ip, 'Total-1-R.png')) {
+    $table = "bd_rx_total_log";
+    $interval=172800;
+    $ip= '0.0.0.0/0';
+}
+
+if (ispos($ip, 'Total-1-S.png')) {
+    $table = "bd_tx_total_log";
+    $interval=172800;
+    $ip= '0.0.0.0/0';
+}
+
+//weekly
+if (ispos($ip, 'Total-2-R.png')) {
+    $table = "bd_rx_total_log";
+    $interval=1691200;
+    $ip= '0.0.0.0/0';
+}
+
+if (ispos($ip, 'Total-2-S.png')) {
+    $table = "bd_tx_total_log";
+    $interval=691200;
+    $ip= '0.0.0.0/0';
+}
+
+//monthly
+if (ispos($ip, 'Total-3-R.png')) {
+    $table = "bd_rx_total_log";
+    $interval=3024000;
+    $ip= '0.0.0.0/0';
+}
+
+if (ispos($ip, 'Total-3-S.png')) {
+    $table = "bd_tx_total_log";
+    $interval=3024000;
+    $ip= '0.0.0.0/0';
+}
+
+//yearly
+if (ispos($ip, 'Total-4-R.png')) {
+    $table = "bd_rx_total_log";
+    $interval=34560000;
+    $ip= '0.0.0.0/0';
+}
+
+if (ispos($ip, 'Total-4-S.png')) {
+    $table = "bd_tx_total_log";
+    $interval=34560000;
+    $ip= '0.0.0.0/0';
+}
+
+//
+//Per user graphs
+//
+
+//daily
 if (ispos($ip, '-1-R')) {
     $table = "bd_rx_log";
     $interval=172800;
@@ -156,6 +215,9 @@ if (ispos($ip, '-4-S')) {
     $interval=34560000;
     $ip= str_replace('-4-S.png', '', $ip);
 }
+
+
+  
 
 if (isset($_GET['timestamp']))
   $timestamp = $_GET['timestamp'];
@@ -303,7 +365,7 @@ $ftp = $a_ftp;
 $http = $a_http;
 $p2p = $a_p2p;
 
-$YMax += $YMax*0.12;    // Add an extra 5%
+$YMax += $YMax*DFLT_OFFSETY;    // Add an extra 5%
 
 // if a y scale was specified override YMax
 if (isset($yscale))
