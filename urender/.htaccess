@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^(.*)/(.*)            render.php?sensor_name=$1&ip=$2 [L]
