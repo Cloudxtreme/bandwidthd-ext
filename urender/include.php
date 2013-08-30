@@ -24,7 +24,7 @@ define("YOFFSET", 45);
 define("DB_PGSQL", 1);
 define("DB_MYSQL", 2);
 
-require("config.conf");
+require("config.php");
 
 function ConnectDb()
 {
