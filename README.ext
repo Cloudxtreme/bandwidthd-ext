@@ -5,6 +5,11 @@ Collector:
 ==========
 
 # portsnap fetch && portsnap extract && portsnap update
+# cd /usr/ports/databases/mysql55-server/ && make BATCH=yes install 
+# cp /usr/local/share/mysql/my-small.cnf /etc/my.cnf
+# cd /usr/ports/lang/php5 && make WITH_CLI=yes WITH_APACHE=yes  BATCH=yes install 
+# cd /usr/ports/lang/php5-extensions/ && make WITH_MYSQL=yes WITH_MBSTRING=yes WITH_ICONV=yes WITH_GD=yes WITH_BCMATH=yes WITH_XML=yes BATCH=yes install 
+# cd /usr/ports/archivers/unzip && make BATCH=yes install
 
 
 
