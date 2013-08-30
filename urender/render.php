@@ -124,7 +124,7 @@ if (ispos($ip, 'Total-1-S.png')) {
 //weekly
 if (ispos($ip, 'Total-2-R.png')) {
     $table = "bd_rx_total_log";
-    $interval=1691200;
+    $interval=691200;
     $ip= '0.0.0.0/0';
 }
 
@@ -180,7 +180,7 @@ if (ispos($ip, '-1-S')) {
 //weekly
 if (ispos($ip, '-2-R')) {
     $table = "bd_rx_log";
-    $interval=1691200;
+    $interval=691200;
     $ip= str_replace('-2-R.png', '', $ip);
 }
 
@@ -445,16 +445,16 @@ else
 ImageString($im, 2, XOFFSET+205,  $height-20, $txtTotalSent, $black);
 ImageString($im, 2, $width/2+XOFFSET/2,  $height-20, $txtPeakSendRate, $black);
 if (DRAW_IP OR DEBUG) {
-    imagestring($im, 2, XOFFSET+5, $height-20, 'IP: '.$ip, $black);
+    imagestring($im, 1, XOFFSET+5, $height-20, 'IP: '.$ip, $black);
 }
 
 if (DRAW_SENSOR OR DEBUG) {
-    imagestring($im, 2, XOFFSET+605, $height-20, 'sensor: '.$sensor_name, $black);
+    imagestring($im, 1, XOFFSET+5, $height-10, 'sensor: '.$sensor_name, $black);
 }
 //debug data
 if (DEBUG) {
-    imagestring($im, 2, XOFFSET+705, $height-40, 'tbl: '.$table, $black);
-    imagestring($im, 2, XOFFSET+705, $height-30, 'int: '.$interval, $black);
+    imagestring($im, 2, XOFFSET+705, $height-25, 'tbl: '.$table, $black);
+    imagestring($im, 2, XOFFSET+705, $height-15, 'int: '.$interval, $black);
 }
 
 
