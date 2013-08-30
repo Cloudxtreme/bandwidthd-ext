@@ -99,6 +99,12 @@ if (isset($_GET['table']))
 else
   $table = "bd_rx_log";
 
+
+//override scale from config
+if (YSCALE_OVERRIDE!=0) {
+    $yscale=YSCALE_OVERRIDE;
+}
+
 if (isset($_GET['yscale']))
   $yscale = $_GET['yscale'];
 
@@ -367,13 +373,18 @@ $p2p = $a_p2p;
 
 $YMax += $YMax*DFLT_OFFSETY;    // Add an extra 5%
 
+
+
 // if a y scale was specified override YMax
-if (isset($yscale))
+if (isset($yscale)) {
   $YMax = $yscale/8;
+}
 
 // Avoid divide by zero
-if ($YMax == 0)
+if ($YMax == 0) {
   $YMax = 1;
+}
+
 
 // Plot the data
 header("Content-type: image/png");
