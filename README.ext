@@ -30,7 +30,7 @@ Sensor:
 # cd /usr/ports/databases/mysql55-client/ && make BATCH=yes install 
 # cd /usr/ports/archivers/unzip && make BATCH=yes install
 # cd /tmp/ && fetch https://github.com/nightflyza/bandwidthd-ext/archive/master.zip && unzip master.zip 
-# cd bandwidthd-ext-master && ./configure && make && make install
+# cd bandwidthd-ext-master && make clean && ./configure && make && make install
 # cp -R presets/sensor/bandwidthd.conf /usr/local/etc/
 
 Then edit /usr/local/etc/bandwidthd.conf and specify needed options like subnet, interface and database settings.
