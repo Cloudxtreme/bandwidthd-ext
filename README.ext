@@ -1,7 +1,16 @@
 FreeBSD Install notes
 ======================
 
+Collector:
+==========
+
+# portsnap fetch && portsnap extract && portsnap update
+
+
+
+
 Sensor:
+=======
 1. install mysql client
 # cd /usr/ports/databases/mysql55-client/ && make BATCH=yes install 
 # cd /usr/ports/archivers/unzip && make BATCH=yes install
@@ -12,5 +21,3 @@ Sensor:
 Then edit /usr/local/etc/bandwidthd.conf and specify needed options like subnet, interface and database settings.
 
 
-Collector:
-..TO BE CONTINUED..
