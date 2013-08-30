@@ -444,6 +444,7 @@ else
                                                                                                                              
 ImageString($im, 2, XOFFSET+205,  $height-20, $txtTotalSent, $black);
 ImageString($im, 2, $width/2+XOFFSET/2,  $height-20, $txtPeakSendRate, $black);
+
 if (DRAW_IP OR DEBUG) {
     imagestring($im, 1, XOFFSET+5, $height-20, 'IP: '.$ip, $black);
 }
@@ -453,8 +454,9 @@ if (DRAW_SENSOR OR DEBUG) {
 }
 //debug data
 if (DEBUG) {
-    imagestring($im, 2, XOFFSET+705, $height-25, 'tbl: '.$table, $black);
-    imagestring($im, 2, XOFFSET+705, $height-15, 'int: '.$interval, $black);
+    imagestring($im, 1, XOFFSET+705, $height-35, 'tbl: '.$table, $black);
+    imagestring($im, 1, XOFFSET+705, $height-25, 'int: '.$interval, $black);
+    imagestring($im, 1, XOFFSET+705, $height-15, 'ymax: '.$YMax, $black);
 }
 
 
