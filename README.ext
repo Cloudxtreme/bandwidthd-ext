@@ -18,6 +18,7 @@ Collector:
 # cd /tmp/ && fetch https://github.com/nightflyza/bandwidthd-ext/archive/master.zip && unzip master.zip
 # cd bandwidthd-ext-master
 # cp -R  presets/collector/httpd.conf /usr/local/etc/apache22/
+# echo 'date.timezone="Europe/Kiev"' >> /usr/local/etc/php.ini 
 # apachectl restart
 # cp -R urender /usr/local/www/apache22/data/
 
