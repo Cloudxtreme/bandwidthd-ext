@@ -444,12 +444,17 @@ else
                                                                                                                              
 ImageString($im, 2, XOFFSET+205,  $height-20, $txtTotalSent, $black);
 ImageString($im, 2, $width/2+XOFFSET/2,  $height-20, $txtPeakSendRate, $black);
-if (DRAW_IP) {
+if (DRAW_IP OR DEBUG) {
     imagestring($im, 2, XOFFSET+5, $height-20, 'IP: '.$ip, $black);
 }
 
-if (DRAW_SENSOR) {
+if (DRAW_SENSOR OR DEBUG) {
     imagestring($im, 2, XOFFSET+605, $height-20, 'sensor: '.$sensor_name, $black);
+}
+//debug data
+if (DEBUG) {
+    imagestring($im, 2, XOFFSET+705, $height-40, 'tbl: '.$table, $black);
+    imagestring($im, 2, XOFFSET+705, $height-30, 'int: '.$interval, $black);
 }
 
 
