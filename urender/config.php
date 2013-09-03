@@ -7,7 +7,7 @@ define("DFLT_OFFSETY",0.10);
 define("DRAW_IP",true);
 define("DRAW_SENSOR",true);
 define("YSCALE_OVERRIDE",0); // 113800 - 100mbit/s
-define("DEBUG",false);
+define("DEBUG",true);
 
 // Select type of database you are using
 // Possible values are DB_PGSQL and DB_MYSQL

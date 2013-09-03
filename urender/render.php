@@ -1,6 +1,9 @@
 <?PHP
 require("include.php");
 
+$starttime = explode(' ', microtime());
+$starttime = $starttime[1] + $starttime[0];
+
 // Returns x location of any given timestamp
 function ts2x($ts)
 {
@@ -468,7 +471,7 @@ if (DEBUG) {
     imagestring($im, 1, XOFFSET+705, $height-35, 'tbl: '.$table, $black);
     imagestring($im, 1, XOFFSET+705, $height-25, 'int: '.$interval, $black);
     imagestring($im, 1, XOFFSET+705, $height-15, 'ymax: '.$YMax, $black);
-}
+    }
 
 
 // Draw X Axis
@@ -657,6 +660,12 @@ while ($YTic <= ($YMax - $YMax/10)) {
   $txtYLegend = sprintf("%4.1f %sbits/s", (8.0*$YTic)/$Divisor, $YLegend);
   ImageString($im, 2, 3, $y-7, $txtYLegend, $black);
   $YTic += $YStep;
+}
+
+if (DEBUG) {
+    $mtime = explode(' ', microtime());
+    $totaltime = $mtime[0] + $mtime[1] - $starttime;
+    imagestring($im, 1, XOFFSET+605, $height-15, 'GT: '.round($totaltime,2), $black);
 }
 
 imagepng($im); 
