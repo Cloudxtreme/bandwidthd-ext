@@ -262,7 +262,15 @@ if($dbtype == DB_PGSQL) {
 }
 
 $pg_sql = "select *, extract(epoch from timestamp) as ts from sensors, $table where sensors.sensor_id = ".$table.".sensor_id $sql_ip and sensor_name = '".bd_escape_string($sensor_name)."' and timestamp > $timestamp::abstime and timestamp < ".($timestamp+$interval)."::abstime order by ip;";
+//original query
+//$my_sql = "select *, unix_timestamp(timestamp) as ts from sensors, $table where sensors.sensor_id = ".$table.".sensor_id $sql_ip and sensor_name = '".bd_escape_string($sensor_name)."' and unix_timestamp(timestamp) > $timestamp and unix_timestamp(timestamp) < ".($timestamp+$interval)." order by ip";
+//optimized query
+$minTime='';
+$maxTime='';
 $my_sql = "select *, unix_timestamp(timestamp) as ts from sensors, $table where sensors.sensor_id = ".$table.".sensor_id $sql_ip and sensor_name = '".bd_escape_string($sensor_name)."' and unix_timestamp(timestamp) > $timestamp and unix_timestamp(timestamp) < ".($timestamp+$interval)." order by ip";
+if (DEBUG) {
+file_put_contents('debug_q.log',$my_sql);
+}
 //echo $my_sql."<br>"; exit(1);
 if($dbtype == DB_PGSQL)
   $result = pg_query($pg_sql);
