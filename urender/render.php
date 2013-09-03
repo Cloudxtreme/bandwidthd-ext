@@ -272,10 +272,12 @@ if (DEBUG) {
 file_put_contents('debug_q.log',$my_sql);
 }
 //echo $my_sql."<br>"; exit(1);
-if($dbtype == DB_PGSQL)
-  $result = pg_query($pg_sql);
-else if($dbtype == DB_MYSQL)
+if($dbtype == DB_PGSQL) {
+  $result = pg_query($pg_sql); 
+}
+else if($dbtype == DB_MYSQL) {
   $result = mysql_query($my_sql);
+}
 
 // The SQL statement pulls the data out of the database ordered by IP address, that way we can average each
 // datapoint for each IP address to provide smoothing and then toss the smoothed value into the accumulator
